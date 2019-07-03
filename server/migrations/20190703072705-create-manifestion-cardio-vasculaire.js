@@ -20,12 +20,6 @@ module.exports = {
       bradycardieNb: {
         type: Sequelize.INTEGER
       },
-      hypotension: {
-        type: Sequelize.BOOLEAN
-      },
-      hypotensionNb: {
-        type: Sequelize.INTEGER
-      },
       hypertension: {
         type: Sequelize.BOOLEAN
       },
@@ -99,7 +93,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       dateDuJour: {
-        type: Sequelize.DATE
+          type: Sequelize.DATE,
       },
       createdAt: {
         allowNull: false,

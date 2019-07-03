@@ -5,8 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     tachycardieNb: DataTypes.INTEGER,
     bradycardie: DataTypes.BOOLEAN,
     bradycardieNb: DataTypes.INTEGER,
-    hypotension: DataTypes.BOOLEAN,
-    hypotensionNb: DataTypes.INTEGER,
     hypertension: DataTypes.BOOLEAN,
     hypertensionNb: DataTypes.INTEGER,
     hypotension: DataTypes.BOOLEAN,

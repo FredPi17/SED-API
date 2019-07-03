@@ -2,242 +2,48 @@
 
 export default (sequelize, DataTypes) => {
     const ManifestionDigestive = sequelize.define('ManifestionDigestive', {
-        dysphagie: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        fausseRoute: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        rgo: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        regurgitation: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        sensationBrulureOesophage: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        mauvaiseHaleine: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        eructation: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        nausees: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        vomissements: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        pesanteurGastrique: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        indigestion: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        gastroParesie: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        brulureEstomac: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        ballonements: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        aerophagie: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        douleurAbdominale: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        douleurEpigastrique: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        crampeIntestinale: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        estomacGonfle: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        satietePrecoce: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        perteAppetit: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        soifPermanente: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        impossibiliteAlimenter: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        absenceSatiete: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        sensationFaimDouloureuse: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        hypoglycemieReactionnelle: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        gaz: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        constipation: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        selleLiquide: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        spasmeIntestinaux: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        douleurVesiculaire: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        imperiositeFecale: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        amaigrissement: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        prisePoids: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        saignementDigestifHaut: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        saignementDigestifBas: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        criseHemorroide: {
-            type: DataTypes.BOOLEAN,
-            allowNull: {
-                args: true
-            }
-        },
-        commentaire: {
-            type: DataTypes.STRING,
-            allowNull: {
-                args: true
-            }
-        },
-        dateDuJour: {
-            type: DataTypes.DATE,
-            allowNull: {
-                args: true
-            }
-        }
+        dysphagie: DataTypes.BOOLEAN,
+        fausseRoute: DataTypes.BOOLEAN,
+        rgo: DataTypes.BOOLEAN,
+        regurgitation: DataTypes.BOOLEAN,
+        sensationBrulureOesophage: DataTypes.BOOLEAN,
+        mauvaiseHaleine: DataTypes.BOOLEAN,
+        eructation: DataTypes.BOOLEAN,
+        nausees: DataTypes.BOOLEAN,
+        vomissements: DataTypes.BOOLEAN,
+        pesanteurGastrique: DataTypes.BOOLEAN,
+        indigestion: DataTypes.BOOLEAN,
+        gastroParesie: DataTypes.BOOLEAN,
+        brulureEstomac: DataTypes.BOOLEAN,
+        ballonements: DataTypes.BOOLEAN,
+        aerophagie: DataTypes.BOOLEAN,
+        douleurAbdominale: DataTypes.BOOLEAN,
+        douleurEpigastrique: DataTypes.BOOLEAN,
+        crampeIntestinale: DataTypes.BOOLEAN,
+        estomacGonfle: DataTypes.BOOLEAN,
+        satietePrecoce: DataTypes.BOOLEAN,
+        perteAppetit: DataTypes.BOOLEAN,
+        soifPermanente: DataTypes.BOOLEAN,
+        impossibiliteAlimenter: DataTypes.BOOLEAN,
+        absenceSatiete: DataTypes.BOOLEAN,
+        sensationFaimDouloureuse: DataTypes.BOOLEAN,
+        hypoglycemieReactionnelle: DataTypes.BOOLEAN,
+        gaz: DataTypes.BOOLEAN,
+        constipation: DataTypes.BOOLEAN,
+        selleLiquide: DataTypes.BOOLEAN,
+        spasmeIntestinaux: DataTypes.BOOLEAN,
+        douleurVesiculaire: DataTypes.BOOLEAN,
+        imperiositeFecale: DataTypes.BOOLEAN,
+        amaigrissement: DataTypes.BOOLEAN,
+        prisePoids: DataTypes.BOOLEAN,
+        saignementDigestifHaut: DataTypes.BOOLEAN,
+        saignementDigestifBas: DataTypes.BOOLEAN,
+        criseHemorroide: DataTypes.BOOLEAN,
+        commentaire: DataTypes.STRING,
+        dateDuJour: DataTypes.DATE,
+
     }, {});
-    ManifestionDigestive.associate = (models) => {
+    ManifestionDigestive.associate = function (models) {
         // associations can be defined here
     };
     return ManifestionDigestive;
