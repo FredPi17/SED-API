@@ -96,7 +96,22 @@ class GorgeSymptome {
     }
 
     static deleteGorgeSymptome(req, res) {
-
+        return Gorge
+            .findByPk(req.params.id)
+            .then(gorge => {
+                if (!gorge) {
+                    return res.status(400).send({
+                        message: 'Gorge Not Found',
+                    });
+                }
+                return gorge
+                    .destroy()
+                    .then(() => res.status(200).send({
+                        message: 'Gorge successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error))
     }
 }
 
