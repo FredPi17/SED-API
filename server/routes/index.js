@@ -14,6 +14,7 @@ import ManifCognitive from "../controllers/manifestationCognitive";
 import ManifMusculaire from "../controllers/manifestationMusculaire";
 import ManifOphtalmo from "../controllers/manifestationOphtalmologique";
 import ManifCutanee from "../controllers/manifestationCutanee";
+import ManifGyneco from "../controllers/manifestationGyneco";
 
 export default (app) => {
 
