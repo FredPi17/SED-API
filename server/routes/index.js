@@ -8,6 +8,11 @@ import ManifBuccoDent from "../controllers/manifestationBuccoDent";
 import ManifUrinaire from "../controllers/manifestationUrinaire";
 import ManifNeuro from "../controllers/manifestationNeuro";
 import ManifOsteoArticulaire from "../controllers/manifestationOsteoArticulaire";
+import ManifSommeilFatigue from "../controllers/manifestationSommeilFatigue";
+import ManifPsychologique from "../controllers/manifPsychologique";
+import ManifCognitive from "../controllers/manifestationCognitive";
+import ManifMusculaire from "../controllers/manifestationMusculaire";
+import ManifOphtalmo from "../controllers/manifestationOphtalmologique";
 
 export default (app) => {
 
@@ -75,5 +80,35 @@ export default (app) => {
     app.get('/api/manifestionOsteoArticulaire', ManifOsteoArticulaire.getManifestionOsteoArticulaire); // API route to get all osteoArticulaire
     app.put('/api/manifestionOsteoArticulaire', ManifOsteoArticulaire.updateManifestionOsteoArticulaire); // API route to update a osteoArticulaire
     app.delete('/api/manifestionOsteoArticulaire/:id', ManifOsteoArticulaire.deleteManifestionOsteoArticulaire); // API route to delete a osteoArticulaire
+
+    // Routes for manifestion sommeilFatigue
+    app.post('/api/manifestionSommeilFatigue', ManifSommeilFatigue.addManifestionSommeilFatigue); // API route to add a sommeilFatigue
+    app.get('/api/manifestionSommeilFatigue', ManifSommeilFatigue.getManifestionSommeilFatigue); // API route to get all sommeilFatigue
+    app.put('/api/manifestionSommeilFatigue', ManifSommeilFatigue.updateManifestionSommeilFatigue); // API route to update a sommeilFatigue
+    app.delete('/api/manifestionSommeilFatigue/:id', ManifSommeilFatigue.deleteManifestionSommeilFatigue); // API route to delete a sommeilFatigue
+
+    // Routes for manifestion psychologique
+    app.post('/api/manifestionPsychologique', ManifPsychologique.addManifestionPsychologique); // API route to add a psychologique
+    app.get('/api/manifestionPsychologique', ManifPsychologique.getManifestionPsychologique); // API route to get all psychologique
+    app.put('/api/manifestionPsychologique', ManifPsychologique.updateManifestionPsychologique); // API route to update a psychologique
+    app.delete('/api/manifestionPsychologique/:id', ManifPsychologique.deleteManifestionPsychologique); // API route to delete a psychologique
+
+    // Routes for manifestion cognitive
+    app.post('/api/manifestionCognitive', ManifCognitive.addManifestionCognitive); // API route to add a cognitive
+    app.get('/api/manifestionCognitive', ManifCognitive.getManifestionCognitive); // API route to get all cognitive
+    app.put('/api/manifestionCognitive', ManifCognitive.updateManifestionCognitive); // API route to update a cognitive
+    app.delete('/api/manifestionCognitive/:id', ManifCognitive.deleteManifestionCognitive); // API route to delete a cognitive
+
+    // Routes for manifestion musculaire
+    app.post('/api/manifestionMusculaire', ManifMusculaire.addManifestionMusculaire); // API route to add a musculaire
+    app.get('/api/manifestionMusculaire', ManifMusculaire.getManifestionMusculaire); // API route to get all musculaire
+    app.put('/api/manifestionMusculaire', ManifMusculaire.updateManifestionMusculaire); // API route to update a musculaire
+    app.delete('/api/manifestionMusculaire/:id', ManifMusculaire.deleteManifestionMusculaire); // API route to delete a musculaire
+
+    // Routes for manifestion ophtalmo
+    app.post('/api/manifestionOphtalmo', ManifOphtalmo.addManifestionOphtalmo); // API route to add a ophtalmo
+    app.get('/api/manifestionOphtalmo', ManifOphtalmo.getManifestionOphtalmo); // API route to get all ophtalmo
+    app.put('/api/manifestionOphtalmo', ManifOphtalmo.updateManifestionOphtalmo); // API route to update a ophtalmo
+    app.delete('/api/manifestionOphtalmo/:id', ManifOphtalmo.deleteManifestionOphtalmo); // API route to delete a ophtalmo
 
 };
