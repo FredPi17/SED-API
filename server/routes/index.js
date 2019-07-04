@@ -4,6 +4,10 @@ import ManifDigestive from '../controllers/manifestationDigestive';
 import ManifCardio from "../controllers/manifestationCardioVasculaire";
 import ManifRespi from "../controllers/manifestationRespiratoire";
 import ManifOrl from "../controllers/manifestationOrl";
+import ManifBuccoDent from "../controllers/manifestationBuccoDent";
+import ManifUrinaire from "../controllers/manifestationUrinaire";
+import ManifNeuro from "../controllers/manifestationNeuro";
+import ManifOsteoArticulaire from "../controllers/manifestationOsteoArticulaire";
 
 export default (app) => {
 
@@ -48,5 +52,28 @@ export default (app) => {
     app.put('/api/manifestionOrl', ManifOrl.updateManifestionOrl); // API route to update a manifestionOrl
     app.delete('/api/manifestionOrl/:id', ManifOrl.deleteManifestionOrl); // API route to delete a manifestionOrl
 
+    // Routes for manifestion bucco-dentaire
+    app.post('/api/manifestionBuccoDent', ManifBuccoDent.addManifestionBuccoDent); // API route to add a bucco-dentaire
+    app.get('/api/manifestionBuccoDent', ManifBuccoDent.getManifestionBuccoDent); // API route to get all bucco-dentaire
+    app.put('/api/manifestionBuccoDent', ManifBuccoDent.updateManifestionBuccoDent); // API route to update a bucco-dentaire
+    app.delete('/api/manifestionBuccoDent/:id', ManifBuccoDent.deleteManifestionBuccoDent); // API route to delete a bucco-dentaire
+
+    // Routes for manifestion neuro
+    app.post('/api/manifestionNeuro', ManifNeuro.addManifestionNeuro); // API route to add a neuro
+    app.get('/api/manifestionNeuro', ManifNeuro.getManifestionNeuro); // API route to get all neuro
+    app.put('/api/manifestionNeuro', ManifNeuro.updateManifestionNeuro); // API route to update a neuro
+    app.delete('/api/manifestionNeuro/:id', ManifNeuro.deleteManifestionNeuro); // API route to delete a neuro
+
+    // Routes for manifestion neuro
+    app.post('/api/manifestionUrinaire', ManifUrinaire.addManifestionUrinaire); // API route to add a urinaire
+    app.get('/api/manifestionUrinaire', ManifUrinaire.getManifestionUrinaire); // API route to get all urinaire
+    app.put('/api/manifestionUrinaire', ManifUrinaire.updateManifestionUrinaire); // API route to update a urinaire
+    app.delete('/api/manifestionUrinaire/:id', ManifUrinaire.deleteManifestionUrinaire); // API route to delete a urinaire
+
+    // Routes for manifestion osteoArticulaire
+    app.post('/api/manifestionOsteoArticulaire', ManifOsteoArticulaire.addManifestionOsteoArticulaire); // API route to add a osteoArticulaire
+    app.get('/api/manifestionOsteoArticulaire', ManifOsteoArticulaire.getManifestionOsteoArticulaire); // API route to get all osteoArticulaire
+    app.put('/api/manifestionOsteoArticulaire', ManifOsteoArticulaire.updateManifestionOsteoArticulaire); // API route to update a osteoArticulaire
+    app.delete('/api/manifestionOsteoArticulaire/:id', ManifOsteoArticulaire.deleteManifestionOsteoArticulaire); // API route to delete a osteoArticulaire
 
 };
