@@ -15,6 +15,8 @@ import ManifMusculaire from "../controllers/manifestationMusculaire";
 import ManifOphtalmo from "../controllers/manifestationOphtalmologique";
 import ManifCutanee from "../controllers/manifestationCutanee";
 import ManifGyneco from "../controllers/manifestationGyneco";
+import Repercu from "../controllers/repercussions";
+import Traitement from "../controllers/Traitement";
 
 export default (app) => {
 
@@ -125,5 +127,16 @@ export default (app) => {
     app.put('/api/manifestionGyneco', ManifGyneco.updateManifestionGyneco); // API route to update a gyneco
     app.delete('/api/manifestionGyneco/:id', ManifGyneco.deleteManifestionGyneco); // API route to delete a gyneco
 
+    // Routes for repercussions
+    app.post('/api/repercussions', Repercu.addRepercussion); // API route to add a repercussions
+    app.get('/api/repercussions', Repercu.getRepercussion); // API route to get all repercussions
+    app.put('/api/repercussions', Repercu.updateRepercussion); // API route to update a repercussions
+    app.delete('/api/repercussions/:id', Repercu.deleteRepercussion); // API route to delete a repercussions
+
+    // Routes for traitements
+    app.post('/api/traitements', Traitement.addTraitement); // API route to add a traitements
+    app.get('/api/traitements', Traitement.getTraitement); // API route to get all traitements
+    app.put('/api/traitements', Traitement.updateTraitement); // API route to update a traitements
+    app.delete('/api/traitements/:id', Traitement.deleteTraitement); // API route to delete a traitements
 
 };
