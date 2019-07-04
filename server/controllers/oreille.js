@@ -5,31 +5,27 @@ const {Oreille} = model;
 class OreilleSymptome {
 
     static addOreilleSymptome(req, res) {
-        const {mauxGorge, gorgeQuiGratte, gorgeIrritee, douleurAigueGorge, deglutitionDouloureuse, troubleGout, raclementGorge, ecoulementArriereGorge, dysphonie, aphonie, enrouement, angine, pharyngite, laryngite, tracheite, adenopathie, commentaire} = req.body;
+        const {
+            hyperacousie, hypoacousie, acouphene, bourdonnement, saignementOreille, ecoulementOreille, otite, vertigeVrai,
+            sensationVertige, commentaire
+        } = req.body;
         return Oreille
             .create({
-                mauxGorge,
-                gorgeQuiGratte,
-                gorgeIrritee,
-                douleurAigueGorge,
-                deglutitionDouloureuse,
-                troubleGout,
-                raclementGorge,
-                ecoulementArriereGorge,
-                dysphonie,
-                aphonie,
-                enrouement,
-                angine,
-                pharyngite,
-                laryngite,
-                tracheite,
-                adenopathie,
+                hyperacousie,
+                hypoacousie,
+                acouphene,
+                bourdonnement,
+                saignementOreille,
+                ecoulementOreille,
+                otite,
+                vertigeVrai,
+                sensationVertige,
                 commentaire
             })
-            .then(addGorgeSymptome => res.status(201).send({
+            .then(addoreilleSymptome => res.status(201).send({
                 success: true,
-                message: 'Gorge symptome successfully created',
-                addGorgeSymptome
+                message: 'oreille symptome successfully created',
+                addoreilleSymptome
             }))
     }
 
@@ -40,11 +36,64 @@ class OreilleSymptome {
     }
 
     static updateOreilleSymptome(req, res) {
-
+        const {
+            hyperacousie, hypoacousie, acouphene, bourdonnement, saignementOreille, ecoulementOreille, otite, vertigeVrai,
+            sensationVertige, commentaire
+        } = req.body;
+        return oreille
+            .findByPk(req.params.id)
+            .then((oreille) => {
+                oreille.update({
+                    hyperacousie: hyperacousie || oreille.hyperacousie,
+                    hypoacousie: hypoacousie || oreille.hypoacousie,
+                    acouphene: acouphene || oreille.acouphene,
+                    bourdonnement: bourdonnement || oreille.bourdonnement,
+                    saignementOreille: saignementOreille || oreille.saignementOreille,
+                    ecoulementOreille: ecoulementOreille || oreille.ecoulementOreille,
+                    otite: otite || oreille.otite,
+                    vertigeVrai: vertigeVrai || oreille.vertigeVrai,
+                    sensationVertige: sensationVertige || oreille.sensationVertige,
+                    commentaire: commentaire || oreille.commentaire
+                })
+                    .then((updatedoreille) => {
+                        res.status(200).send({
+                            message: 'oreille updated',
+                            data: {
+                                hyperacousie: hyperacousie || oreille.hyperacousie,
+                                hypoacousie: hypoacousie || oreille.hypoacousie,
+                                acouphene: acouphene || oreille.acouphene,
+                                bourdonnement: bourdonnement || oreille.bourdonnement,
+                                saignementOreille: saignementOreille || oreille.saignementOreille,
+                                ecoulementOreille: ecoulementOreille || oreille.ecoulementOreille,
+                                otite: otite || oreille.otite,
+                                vertigeVrai: vertigeVrai || oreille.vertigeVrai,
+                                sensationVertige: sensationVertige || oreille.sensationVertige,
+                                commentaire: commentaire || oreille.commentaire
+                            }
+                        })
+                    })
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
     }
 
     static deleteOreilleSymptome(req, res) {
-
+        return Oreille
+            .findByPk(req.params.id)
+            .then(oreille => {
+                if (!oreille) {
+                    return res.status(400).send({
+                        message: 'Oreille Not Found',
+                    });
+                }
+                return oreille
+                    .destroy()
+                    .then(() => res.status(200).send({
+                        message: 'Oreille successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error))
     }
 }
 
