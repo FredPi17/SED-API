@@ -13,6 +13,7 @@ import ManifPsychologique from "../controllers/manifPsychologique";
 import ManifCognitive from "../controllers/manifestationCognitive";
 import ManifMusculaire from "../controllers/manifestationMusculaire";
 import ManifOphtalmo from "../controllers/manifestationOphtalmologique";
+import ManifCutanee from "../controllers/manifestationCutanee";
 
 export default (app) => {
 
@@ -110,5 +111,18 @@ export default (app) => {
     app.get('/api/manifestionOphtalmo', ManifOphtalmo.getManifestionOphtalmo); // API route to get all ophtalmo
     app.put('/api/manifestionOphtalmo', ManifOphtalmo.updateManifestionOphtalmo); // API route to update a ophtalmo
     app.delete('/api/manifestionOphtalmo/:id', ManifOphtalmo.deleteManifestionOphtalmo); // API route to delete a ophtalmo
+
+    // Routes for manifestion cutanee
+    app.post('/api/manifestionCutanee', ManifCutanee.addManifestionCutanee); // API route to add a cutanee
+    app.get('/api/manifestionCutanee', ManifCutanee.getManifestionCutanee); // API route to get all cutanee
+    app.put('/api/manifestionCutanee', ManifCutanee.updateManifestionCutanee); // API route to update a cutanee
+    app.delete('/api/manifestionCutanee/:id', ManifCutanee.deleteManifestionCutanee); // API route to delete a cutanee
+
+    // Routes for manifestion gyneco
+    app.post('/api/manifestionGyneco', ManifGyneco.addManifestionGyneco); // API route to add a gyneco
+    app.get('/api/manifestionGyneco', ManifGyneco.getManifestionGyneco); // API route to get all gyneco
+    app.put('/api/manifestionGyneco', ManifGyneco.updateManifestionGyneco); // API route to update a gyneco
+    app.delete('/api/manifestionGyneco/:id', ManifGyneco.deleteManifestionGyneco); // API route to delete a gyneco
+
 
 };
