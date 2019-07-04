@@ -28,7 +28,7 @@ export default (app) => {
     // Routes for gorge
     app.post('/api/gorge', GorgeSymptome.addGorgeSymptome); // API route to add a gorgeSymptome
     app.get('/api/gorge', GorgeSymptome.getGorgeSymptomes); // API route to get all gorgeSymptomes
-    app.put('/api/gorge', GorgeSymptome.updateGorgeSymptome); // API route to update a gorgeSymptome
+    app.put('/api/gorge/:id', GorgeSymptome.updateGorgeSymptome); // API route to update a gorgeSymptome
     app.delete('/api/gorge/:id', GorgeSymptome.deleteGorgeSymptome); // API route to delete a gorgeSymptome
 
     // Routes for oreille
