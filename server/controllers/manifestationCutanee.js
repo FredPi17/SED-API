@@ -91,7 +91,7 @@ class ManifCutanee {
                 })
                     .then((updatedcutanee) => {
                         res.status(200).send({
-                            message: 'Gorge updated',
+                            message: 'Cutanee updated',
                             data: {
                                 eruptionCutanee: eruptionCutanee || updatedcutanee.eruptionCutanee,
                                 secheresseCutanee: secheresseCutanee || updatedcutanee.secheresseCutanee,

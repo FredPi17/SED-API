@@ -1,6 +1,6 @@
 import model from '../models';
 
-const {ManifestationDigestive} = model;
+const {ManifestionDigestive} = model;
 
 class ManifDigestive {
 
@@ -12,7 +12,7 @@ class ManifDigestive {
             constipation, selleLiquide, spasmeIntestinaux, douleurVesiculaire, imperiositeFecale, amaigrissement, prisePoids, saignementDigestifHaut,
             saignementDigestifBas, criseHemorroide, commentaire
         } = req.body;
-        return ManifestationDigestive
+        return ManifestionDigestive
             .create({
                 dysphagie,
                 fausseRoute,
@@ -61,7 +61,7 @@ class ManifDigestive {
     }
 
     static getManifestionDigestive(req, res) {
-        return ManifestationDigestive
+        return ManifestionDigestive
             .findAll()
             .then(listeManifestationDigestive => res.status(200).send(listeManifestationDigestive));
     }
@@ -74,7 +74,7 @@ class ManifDigestive {
             constipation, selleLiquide, spasmeIntestinaux, douleurVesiculaire, imperiositeFecale, amaigrissement, prisePoids, saignementDigestifHaut,
             saignementDigestifBas, criseHemorroide, commentaire,
         } = req.body;
-        return ManifestationDigestive
+        return ManifestionDigestive
             .findByPk(req.params.id)
             .then((digestive) => {
                 digestive.update({
@@ -168,7 +168,7 @@ class ManifDigestive {
     }
 
     static deleteManifestionDigestive(req, res) {
-        return ManifestationDigestive
+        return ManifestionDigestive
             .findByPk(req.params.id)
             .then(digestive => {
                 if (!digestive) {

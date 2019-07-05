@@ -12,24 +12,28 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       tachycardieNb: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       bradycardie: {
         type: Sequelize.BOOLEAN
       },
       bradycardieNb: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       hypertension: {
         type: Sequelize.BOOLEAN
       },
       hypertensionNb: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       hypotension: {
         type: Sequelize.BOOLEAN
       },
       hypotensionNb: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       tachycardiePosturale: {

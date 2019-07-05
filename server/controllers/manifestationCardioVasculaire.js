@@ -1,6 +1,6 @@
 import model from '../models';
 
-const {ManifestationCardioVasculaire} = model;
+const {ManifestionCardioVasculaire} = model;
 
 class ManifCardio {
 
@@ -10,7 +10,7 @@ class ManifCardio {
             tachycardiePosturaleNb, palpitation, arythmie, marbrures, extremiteFroideEtPale, malaise, varice, syncope, doigtEnfle, phlebite,
             gonflementJambeChevillePieds, syndromeReynaud, essouflement, douleurThoracique, evanouissement, systole, diastole, pouls, commentaire
         } = req.body;
-        return ManifestationCardioVasculaire
+        return ManifestionCardioVasculaire
             .create({
                 tachycardie,
                 tachycardieNb,
@@ -49,7 +49,7 @@ class ManifCardio {
     }
 
     static getManifestionCardio(req, res) {
-        return ManifestationCardioVasculaire
+        return ManifestionCardioVasculaire
             .findAll()
             .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
     }
@@ -60,7 +60,7 @@ class ManifCardio {
             tachycardiePosturaleNb, palpitation, arythmie, marbrures, extremiteFroideEtPale, malaise, varice, syncope, doigtEnfle, phlebite,
             gonflementJambeChevillePieds, syndromeReynaud, essouflement, douleurThoracique, evanouissement, systole, diastole, pouls, commentaire
         } = req.body;
-        return ManifestationCardioVasculaire
+        return ManifestionCardioVasculaire
             .findByPk(req.params.id)
             .then((cardio) => {
                 cardio.update({
@@ -134,7 +134,22 @@ class ManifCardio {
     }
 
     static deleteManifestionCardio(req, res) {
-
+        return ManifestionCardioVasculaire
+            .findByPk(req.params.id)
+            .then(cardio => {
+                if (!cardio) {
+                    return res.status(400).send({
+                        message: 'Cardio Not Found',
+                    });
+                }
+                return cardio
+                    .destroy()
+                    .then(() => res.status(200).send({
+                        message: 'Cardio successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error))
     }
 }
 

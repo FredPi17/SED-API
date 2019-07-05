@@ -40,7 +40,7 @@ class OreilleSymptome {
             hyperacousie, hypoacousie, acouphene, bourdonnement, saignementOreille, ecoulementOreille, otite, vertigeVrai,
             sensationVertige, commentaire
         } = req.body;
-        return oreille
+        return Oreille
             .findByPk(req.params.id)
             .then((oreille) => {
                 oreille.update({

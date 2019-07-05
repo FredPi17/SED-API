@@ -8,7 +8,7 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            bruluresMictionnelle: {
+            brulureMictionnelle: {
                 type: Sequelize.BOOLEAN
             },
             douleurFosseLombaire: {

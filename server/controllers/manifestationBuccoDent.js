@@ -121,7 +121,7 @@ class ManifBuccoDent {
                 return buccoDent
                     .destroy()
                     .then(() => res.status(200).send({
-                        message: 'Gorge successfully deleted'
+                        message: 'BuccoDent successfully deleted'
                     }))
                     .catch(error => res.status(400).send(error));
             })

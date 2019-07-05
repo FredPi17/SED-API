@@ -1,6 +1,6 @@
 import model from '../models';
 
-const {ManifestationRespiratoire} = model;
+const {ManifestionRespiratoire} = model;
 
 class ManifRespi {
 
@@ -10,7 +10,7 @@ class ManifRespi {
             sensationOppressionThoracique, encombrementBronchique, glaireFondrespi, expectorationSanglante, blocageRespiratoire, criseAsthme, touxSeche, touxGrasse,
             dysphonie, aphonie, douleurRespiratoire, infectionVoieAerienneSuperieur, bronchite, pneumopathie, saturationOxygene, commentaire
         } = req.body;
-        return ManifestationRespiratoire
+        return ManifestionRespiratoire
             .create({
                 essouflementEffort,
                 essouflementRepos,
@@ -44,7 +44,7 @@ class ManifRespi {
     }
 
     static getManifestionRespi(req, res) {
-        return ManifestationRespiratoire
+        return ManifestionRespiratoire
             .findAll()
             .then(listeManifestionRespi => res.status(200).send(listeManifestionRespi));
     }
@@ -55,7 +55,7 @@ class ManifRespi {
             sensationOppressionThoracique, encombrementBronchique, glaireFondrespi, expectorationSanglante, blocageRespiratoire, criseAsthme, touxSeche, touxGrasse,
             dysphonie, aphonie, douleurRespiratoire, infectionVoieAerienneSuperieur, bronchite, pneumopathie, saturationOxygene, commentaire
         } = req.body;
-        return ManifestationRespiratoire
+        return ManifestionRespiratoire
             .findByPk(req.params.id)
             .then((respi) => {
                 respi.update({
@@ -119,7 +119,7 @@ class ManifRespi {
     }
 
     static deleteManifestionRespi(req, res) {
-        return ManifestationRespiratoire
+        return ManifestionRespiratoire
             .findByPk(req.params.id)
             .then(respi => {
                 if (!respi) {

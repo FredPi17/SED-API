@@ -1,6 +1,6 @@
 import model from '../models';
 
-const {ManifestationOrl} = model;
+const {ManifestationORL} = model;
 
 class ManifOrl {
 
@@ -9,7 +9,7 @@ class ManifOrl {
             nezBouche, ecoulementNasalTranslucide, ecoulementNasalePurulent, saignementNez, secheresseNasale, troubleOdorat, plaieNasale, rhyniteAllergique,
             rhyniteNonAllergique, pesanteurFaciale, douleurOsFace, sinusiteChronique, commentaire
         } = req.body;
-        return ManifestationOrl
+        return ManifestationORL
             .create({
                 nezBouche,
                 ecoulementNasalTranslucide,
@@ -33,7 +33,7 @@ class ManifOrl {
     }
 
     static getManifestionOrl(req, res) {
-        return ManifestationOrl
+        return ManifestationORL
             .findAll()
             .then(listeManifestionOrl => res.status(200).send(listeManifestionOrl));
     }
@@ -43,7 +43,7 @@ class ManifOrl {
             nezBouche, ecoulementNasalTranslucide, ecoulementNasalePurulent, saignementNez, secheresseNasale, troubleOdorat, plaieNasale, rhyniteAllergique,
             rhyniteNonAllergique, pesanteurFaciale, douleurOsFace, sinusiteChronique, commentaire
         } = req.body;
-        return ManifestationOrl
+        return ManifestationORL
             .findByPk(req.params.id)
             .then((orl) => {
                 orl.update({
@@ -87,7 +87,7 @@ class ManifOrl {
     }
 
     static deleteManifestionOrl(req, res) {
-        return ManifestationOrl
+        return ManifestationORL
             .findByPk(req.params.id)
             .then(orl => {
                 if (!orl) {

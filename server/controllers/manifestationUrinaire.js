@@ -6,14 +6,14 @@ class ManifUrinaire {
 
     static addManifestionUrinaire(req, res) {
         const {
-            bruluresMictionnelle, douleurFosseLombaire, infectionUrinaireSuspectee, infectionUrinaireAveree, pyelonephrite, coliqueNephretique, BULeucocyte, BUNitrite,
+            brulureMictionnelle, douleurFosseLombaire, infectionUrinaireSuspectee, infectionUrinaireAveree, pyelonephrite, coliqueNephretique, BULeucocyte, BUNitrite,
             BUSang, BUProteine, BUGlucose, BUBilirubine, BUUrobilinogene, BUCetone, BUDensite, BUPH, BUAcideAscorbique, douleurVessie, hematurieMacro, hematurieMicro,
             urineTrouble, urineMalodorante, nycturie, fuiteUrinaire, incontinenceEffort, imperiosite, gouttesRetardataire, diminutionBesoinUriner, retentionUrinaire,
             difficulteUriner, impossibiliteUriner, sensationVidangeComplete, mictionDeuxTemps, mictionPoussee, commentaire
         } = req.body;
         return ManifestationUrinaire
             .create({
-                bruluresMictionnelle,
+                brulureMictionnelle,
                 douleurFosseLombaire,
                 infectionUrinaireSuspectee,
                 infectionUrinaireAveree,
@@ -64,7 +64,7 @@ class ManifUrinaire {
 
     static updateManifestionUrinaire(req, res) {
         const {
-            bruluresMictionnelle, douleurFosseLombaire, infectionUrinaireSuspectee, infectionUrinaireAveree, pyelonephrite, coliqueNephretique, BULeucocyte, BUNitrite,
+            brulureMictionnelle, douleurFosseLombaire, infectionUrinaireSuspectee, infectionUrinaireAveree, pyelonephrite, coliqueNephretique, BULeucocyte, BUNitrite,
             BUSang, BUProteine, BUGlucose, BUBilirubine, BUUrobilinogene, BUCetone, BUDensite, BUPH, BUAcideAscorbique, douleurVessie, hematurieMacro, hematurieMicro,
             urineTrouble, urineMalodorante, nycturie, fuiteUrinaire, incontinenceEffort, imperiosite, gouttesRetardataire, diminutionBesoinUriner, retentionUrinaire,
             difficulteUriner, impossibiliteUriner, sensationVidangeComplete, mictionDeuxTemps, mictionPoussee, commentaire
@@ -73,7 +73,7 @@ class ManifUrinaire {
             .findByPk(req.params.id)
             .then((urinaire) => {
                 urinaire.update({
-                    bruluresMictionnelle: bruluresMictionnelle || urinaire.bruluresMictionnelle,
+                    brulureMictionnelle: brulureMictionnelle || urinaire.brulureMictionnelle,
                     douleurFosseLombaire: douleurFosseLombaire || urinaire.douleurFosseLombaire,
                     infectionUrinaireSuspectee: infectionUrinaireSuspectee || urinaire.infectionUrinaireSuspectee,
                     infectionUrinaireAveree: infectionUrinaireAveree || urinaire.infectionUrinaireAveree,
@@ -113,7 +113,7 @@ class ManifUrinaire {
                         res.status(200).send({
                             message: 'urinaire updated',
                             data: {
-                                bruluresMictionnelle: bruluresMictionnelle || updatedurinaire.bruluresMictionnelle,
+                                brulureMictionnelle: brulureMictionnelle || updatedurinaire.brulureMictionnelle,
                                 douleurFosseLombaire: douleurFosseLombaire || updatedurinaire.douleurFosseLombaire,
                                 infectionUrinaireSuspectee: infectionUrinaireSuspectee || updatedurinaire.infectionUrinaireSuspectee,
                                 infectionUrinaireAveree: infectionUrinaireAveree || updatedurinaire.infectionUrinaireAveree,

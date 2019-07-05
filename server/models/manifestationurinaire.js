@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const ManifestationUrinaire = sequelize.define('ManifestationUrinaire', {
-        bruluresMictionnelle: DataTypes.BOOLEAN,
+        brulureMictionnelle: DataTypes.BOOLEAN,
         douleurFosseLombaire: DataTypes.BOOLEAN,
         infectionUrinaireSuspectee: DataTypes.BOOLEAN,
         infectionUrinaireAveree: DataTypes.BOOLEAN,
