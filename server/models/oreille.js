@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     vertigeVrai: DataTypes.BOOLEAN,
     sensationVertige: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   Oreille.associate = function(models) {
     // associations can be defined here

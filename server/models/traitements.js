@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
         quantite: DataTypes.STRING,
         nbParJour: DataTypes.STRING,
         dateDebut: DataTypes.DATE,
-        dateDeFin: DataTypes.DATE
+        dateDeFin: DataTypes.DATE,
+        idUtilisateur: DataTypes.INTEGER
     }, {});
     Traitements.associate = function (models) {
         // associations can be defined here

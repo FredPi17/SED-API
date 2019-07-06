@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     mycose: DataTypes.BOOLEAN,
     fausseCouche: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationGynecologique.associate = function(models) {
     // associations can be defined here

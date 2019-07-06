@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     keratocone: DataTypes.BOOLEAN,
     migraineOphtalmique: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationOphtamologique.associate = function(models) {
     // associations can be defined here

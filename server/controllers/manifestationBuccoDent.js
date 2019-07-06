@@ -8,7 +8,7 @@ class ManifBuccoDent {
         const {
             douleurDentaire, douleurGingivale, saignementgingival, hypersensibiliteDentaire, colletDentaireDouleur, bruxisme, gingivite, anesthesiePasEfficace,
             alterationGencive, dechaussementDentaire, secheresseBuccale, hypersialorhee, boutonFievre, mauvaiseHaleine, aphte, abces, parodontite, emailErode, carie,
-            commentaire
+            commentaire, idUtilisateur
         } = req.body;
         return ManifestationBuccoDentaire
             .create({
@@ -31,7 +31,8 @@ class ManifBuccoDent {
                 parodontite,
                 emailErode,
                 carie,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionBuccoDent => res.status(201).send({
                 success: true,
@@ -43,6 +44,18 @@ class ManifBuccoDent {
     static getManifestionBuccoDent(req, res) {
         return ManifestationBuccoDentaire
             .findAll()
+            .then(listeManifestionBuccoDent => res.status(200).send(listeManifestionBuccoDent));
+    }
+
+    static getOneManifestionBuccoDentByIdUtilisateur(req, res) {
+        return ManifestationBuccoDentaire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionBuccoDent => res.status(200).send(listeManifestionBuccoDent));
+    }
+
+    static getAllManifestionBuccoDentByIdUtilisateur(req, res) {
+        return ManifestationBuccoDentaire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionBuccoDent => res.status(200).send(listeManifestionBuccoDent));
     }
 

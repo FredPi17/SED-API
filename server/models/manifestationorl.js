@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     douleurOsFace: DataTypes.BOOLEAN,
     sinusiteChronique: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationORL.associate = function(models) {
     // associations can be defined here

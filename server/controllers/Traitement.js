@@ -5,7 +5,7 @@ const {Traitements} = model;
 class Traitement {
 
     static addTraitement(req, res) {
-        const {nom, posologie, quantite, nbParJour, dateDebut, dateDeFin} = req.body;
+        const {nom, posologie, quantite, nbParJour, dateDebut, dateDeFin, idUtilisateur} = req.body;
         return Traitements
             .create({
                 nom,
@@ -13,11 +13,12 @@ class Traitement {
                 quantite,
                 nbParJour,
                 dateDebut,
-                dateDeFin
+                dateDeFin,
+                idUtilisateur
             })
             .then(addTraitement => res.status(201).send({
                 success: true,
-                message: 'Traitement urinaire successfully created',
+                message: 'Traitement successfully created',
                 addTraitement
             }))
     }
@@ -25,6 +26,18 @@ class Traitement {
     static getTraitement(req, res) {
         return Traitements
             .findAll()
+            .then(listeTraitement => res.status(200).send(listeTraitement));
+    }
+
+    static getOneTraitementByIdUtilisateur(req, res) {
+        return Traitements
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeTraitement => res.status(200).send(listeTraitement));
+    }
+
+    static getAllTraitementByIdUtilisateur(req, res) {
+        return Traitements
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeTraitement => res.status(200).send(listeTraitement));
     }
 
@@ -41,11 +54,11 @@ class Traitement {
                     quantite: quantite || traitement.quantite,
                     nbParJour: nbParJour || traitement.nbParJour,
                     dateDebut: dateDebut || traitement.dateDebut,
-                    dateDeFin: dateDeFin || traitement.dateDeFin
+                    dateDeFin: dateDeFin || traitement.dateDeFin,
                 })
                     .then((updatedtraitement) => {
                         res.status(200).send({
-                            message: 'traitement updated',
+                            message: 'Traitement updated',
                             data: {
                                 nom: nom || traitement.nom,
                                 posologie: posologie || traitement.posologie,

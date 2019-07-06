@@ -7,7 +7,7 @@ class ManifNeuro {
     static addManifestionNeuro(req, res) {
         const {
             anesthesie, hyperesthesie, paralysie, paresthesie, fourmillement, picotement, engourdissement, tremblement, fasciculation, tetanie, spasme,
-            pseudoParalysie, nevralgie, hypertonieMusculaire, hypotonieMusculaire, douleurNeuropathique, commentaire
+            pseudoParalysie, nevralgie, hypertonieMusculaire, hypotonieMusculaire, douleurNeuropathique, commentaire, idUtilisateur
         } = req.body;
         return ManifestationNeurologique
             .create({
@@ -27,7 +27,8 @@ class ManifNeuro {
                 hypertonieMusculaire,
                 hypotonieMusculaire,
                 douleurNeuropathique,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifNeuro => res.status(201).send({
                 success: true,
@@ -39,6 +40,18 @@ class ManifNeuro {
     static getManifestionNeuro(req, res) {
         return ManifestationNeurologique
             .findAll()
+            .then(listeManifestionNeuro => res.status(200).send(listeManifestionNeuro));
+    }
+
+    static getOneManifestionNeuroByIdUtilisateur(req, res) {
+        return ManifestationNeurologique
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionNeuro => res.status(200).send(listeManifestionNeuro));
+    }
+
+    static getAllManifestionNeuroByIdUtilisateur(req, res) {
+        return ManifestationNeurologique
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionNeuro => res.status(200).send(listeManifestionNeuro));
     }
 

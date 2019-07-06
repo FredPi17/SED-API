@@ -8,7 +8,7 @@ class ManifSommeilFatigue {
         const {
             fatigue, fatigueNb, asthenie, sommeilNonReparateur, insomnie, hypersomnie, apneeSommeil, ronflement, somnolence, cauchemar, sommeilAgite,
             reveilPrecoceSansRendormissement, sueurNocturne, syndromeJambeSansRepos, reveilFrequent, difficulteEndormissement, nycturie, coupDeFatigue, sieste,
-            siesteNb, somnambulisme, terreurNocturne, commentaire
+            siesteNb, somnambulisme, terreurNocturne, commentaire, idUtilisateur
         } = req.body;
         return SommeilEtFatigue
             .create({
@@ -34,7 +34,8 @@ class ManifSommeilFatigue {
                 siesteNb,
                 somnambulisme,
                 terreurNocturne,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifSommeilFatigue => res.status(201).send({
                 success: true,
@@ -46,6 +47,18 @@ class ManifSommeilFatigue {
     static getManifestionSommeilFatigue(req, res) {
         return SommeilEtFatigue
             .findAll()
+            .then(listeManifestionSommeilFatigue => res.status(200).send(listeManifestionSommeilFatigue));
+    }
+
+    static getOneManifestionSommeilFatigueByIdUtilisateur(req, res) {
+        return SommeilEtFatigue
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionSommeilFatigue => res.status(200).send(listeManifestionSommeilFatigue));
+    }
+
+    static getAllManifestionSommeilFatigueByIdUtilisateur(req, res) {
+        return SommeilEtFatigue
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionSommeilFatigue => res.status(200).send(listeManifestionSommeilFatigue));
     }
 

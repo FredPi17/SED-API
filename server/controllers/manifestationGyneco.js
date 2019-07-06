@@ -8,7 +8,7 @@ class ManifGyneco {
         const {
             premierJourRegle, dernierJourRegle, douleurMenstruelle, spotting, regleAbondante, metrorragie, saignementPostCoitale, amenorrhee, secheresseVaginale,
             demangeaisonVulvaire, irritationVulvaire, fissureVulvaire, dyspareunieSuperficielle, dyspareunieProfonde, douleurPelvienne, douleurPelvienneNb,
-            aggravationEtatMenstruation, fibrome, kysteOvarien, infectionVaginale, barthonolite, mycose, fausseCouche, commentaire
+            aggravationEtatMenstruation, fibrome, kysteOvarien, infectionVaginale, barthonolite, mycose, fausseCouche, commentaire, idUtilisateur
         } = req.body;
         return ManifestationGynecologique
             .create({
@@ -35,7 +35,8 @@ class ManifGyneco {
                 barthonolite,
                 mycose,
                 fausseCouche,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionGyneco => res.status(201).send({
                 success: true,
@@ -47,6 +48,18 @@ class ManifGyneco {
     static getManifestionGyneco(req, res) {
         return ManifestationGynecologique
             .findAll()
+            .then(listeManifestionGyneco => res.status(200).send(listeManifestionGyneco));
+    }
+
+    static getOneManifestionGynecoByIdUtilisateur(req, res) {
+        return ManifestationGynecologique
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionGyneco => res.status(200).send(listeManifestionGyneco));
+    }
+
+    static getAllManifestionGynecoByIdUtilisateur(req, res) {
+        return ManifestationGynecologique
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionGyneco => res.status(200).send(listeManifestionGyneco));
     }
 

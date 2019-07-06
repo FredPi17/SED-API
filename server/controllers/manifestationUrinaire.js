@@ -9,7 +9,7 @@ class ManifUrinaire {
             brulureMictionnelle, douleurFosseLombaire, infectionUrinaireSuspectee, infectionUrinaireAveree, pyelonephrite, coliqueNephretique, BULeucocyte, BUNitrite,
             BUSang, BUProteine, BUGlucose, BUBilirubine, BUUrobilinogene, BUCetone, BUDensite, BUPH, BUAcideAscorbique, douleurVessie, hematurieMacro, hematurieMicro,
             urineTrouble, urineMalodorante, nycturie, fuiteUrinaire, incontinenceEffort, imperiosite, gouttesRetardataire, diminutionBesoinUriner, retentionUrinaire,
-            difficulteUriner, impossibiliteUriner, sensationVidangeComplete, mictionDeuxTemps, mictionPoussee, commentaire
+            difficulteUriner, impossibiliteUriner, sensationVidangeComplete, mictionDeuxTemps, mictionPoussee, commentaire, idUtilisateur
         } = req.body;
         return ManifestationUrinaire
             .create({
@@ -47,7 +47,8 @@ class ManifUrinaire {
                 sensationVidangeComplete,
                 mictionDeuxTemps,
                 mictionPoussee,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionUrinaire => res.status(201).send({
                 success: true,
@@ -59,6 +60,18 @@ class ManifUrinaire {
     static getManifestionUrinaire(req, res) {
         return ManifestationUrinaire
             .findAll()
+            .then(listeManifestionUrinaire => res.status(200).send(listeManifestionUrinaire));
+    }
+
+    static getOneManifestionUrinaireByIdUtilisateur(req, res) {
+        return ManifestationUrinaire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionUrinaire => res.status(200).send(listeManifestionUrinaire));
+    }
+
+    static getAllManifestionUrinaireByIdUtilisateur(req, res) {
+        return ManifestationUrinaire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionUrinaire => res.status(200).send(listeManifestionUrinaire));
     }
 

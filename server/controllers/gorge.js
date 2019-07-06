@@ -5,7 +5,10 @@ const {Gorge} = model;
 class GorgeSymptome {
 
     static addGorgeSymptome(req, res) {
-        const {mauxGorge, gorgeQuiGratte, gorgeIrritee, douleurAigueGorge, deglutitionDouloureuse, troubleGout, raclementGorge, ecoulementArriereGorge, dysphonie, aphonie, enrouement, angine, pharyngite, laryngite, tracheite, adenopathie, commentaire} = req.body;
+        const {
+            mauxGorge, gorgeQuiGratte, gorgeIrritee, douleurAigueGorge, deglutitionDouloureuse, troubleGout, raclementGorge, ecoulementArriereGorge, dysphonie,
+            aphonie, enrouement, angine, pharyngite, laryngite, tracheite, adenopathie, commentaire, idUtilisateur
+        } = req.body;
         return Gorge
             .create({
                 mauxGorge,
@@ -24,7 +27,8 @@ class GorgeSymptome {
                 laryngite,
                 tracheite,
                 adenopathie,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addGorgeSymptome => res.status(201).send({
                 success: true,
@@ -36,6 +40,18 @@ class GorgeSymptome {
     static getGorgeSymptomes(req, res) {
         return Gorge
             .findAll()
+            .then(listeGorgeSymptome => res.status(200).send(listeGorgeSymptome));
+    }
+
+    static getOneGorgeSymptomesByIdUtilisateur(req, res) {
+        return Gorge
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeGorgeSymptome => res.status(200).send(listeGorgeSymptome));
+    }
+
+    static getAllGorgeSymptomesByIdUtilisateur(req, res) {
+        return Gorge
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeGorgeSymptome => res.status(200).send(listeGorgeSymptome));
     }
 

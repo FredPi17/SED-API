@@ -8,7 +8,7 @@ class ManifOphtalmo {
         const {
             secheresseOculaire, larmoiement, douleurOculaire, douleurArriereOeil, sensibiliteLumiere, corpsFlottant, fatigueVisuelle, flouVisuel, diplopie,
             baisseAcuiteVisuelPassagere, yeuxRouge, demangeaisonOculaire, heterophorie, conjonctiviteAllergique, conjonctivite, blepharite, keratocone,
-            migraineOphtalmique, commentaire
+            migraineOphtalmique, commentaire, IdUtilisateur
         } = req.body;
         return ManifestationOphtamologique
             .create({
@@ -30,7 +30,8 @@ class ManifOphtalmo {
                 blepharite,
                 keratocone,
                 migraineOphtalmique,
-                commentaire
+                commentaire,
+                IdUtilisateur
             })
             .then(addManifestionOphtalmo => res.status(201).send({
                 success: true,
@@ -42,6 +43,18 @@ class ManifOphtalmo {
     static getManifestionOphtalmo(req, res) {
         return ManifestationOphtamologique
             .findAll()
+            .then(listeManifestionOphtalmo => res.status(200).send(listeManifestionOphtalmo));
+    }
+
+    static getOneManifestionOphtalmoByIdUtilisateur(req, res) {
+        return ManifestationOphtamologique
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionOphtalmo => res.status(200).send(listeManifestionOphtalmo));
+    }
+
+    static getAllManifestionOphtalmoByIdUtilisateur(req, res) {
+        return ManifestationOphtamologique
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionOphtalmo => res.status(200).send(listeManifestionOphtalmo));
     }
 

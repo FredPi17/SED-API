@@ -8,7 +8,7 @@ class ManifRespi {
         const {
             essouflementEffort, essouflementRepos, sensationBlocageDiaphragmatique, bradyapnee, tachyapnee, respirationSifflante, criseRespiratoireAngoissante,
             sensationOppressionThoracique, encombrementBronchique, glaireFondrespi, expectorationSanglante, blocageRespiratoire, criseAsthme, touxSeche, touxGrasse,
-            dysphonie, aphonie, douleurRespiratoire, infectionVoieAerienneSuperieur, bronchite, pneumopathie, saturationOxygene, commentaire
+            dysphonie, aphonie, douleurRespiratoire, infectionVoieAerienneSuperieur, bronchite, pneumopathie, saturationOxygene, commentaire, idUtilisateur
         } = req.body;
         return ManifestionRespiratoire
             .create({
@@ -34,7 +34,8 @@ class ManifRespi {
                 bronchite,
                 pneumopathie,
                 saturationOxygene,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionRespi => res.status(201).send({
                 success: true,
@@ -46,6 +47,18 @@ class ManifRespi {
     static getManifestionRespi(req, res) {
         return ManifestionRespiratoire
             .findAll()
+            .then(listeManifestionRespi => res.status(200).send(listeManifestionRespi));
+    }
+
+    static getOneManifestionRespiByIdUtilisateur(req, res) {
+        return ManifestionRespiratoire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionRespi => res.status(200).send(listeManifestionRespi));
+    }
+
+    static getAllManifestionRespiByIdUtilisateur(req, res) {
+        return ManifestionRespiratoire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionRespi => res.status(200).send(listeManifestionRespi));
     }
 

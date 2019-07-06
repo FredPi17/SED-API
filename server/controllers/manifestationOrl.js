@@ -7,7 +7,7 @@ class ManifOrl {
     static addManifestionOrl(req, res) {
         const {
             nezBouche, ecoulementNasalTranslucide, ecoulementNasalePurulent, saignementNez, secheresseNasale, troubleOdorat, plaieNasale, rhyniteAllergique,
-            rhyniteNonAllergique, pesanteurFaciale, douleurOsFace, sinusiteChronique, commentaire
+            rhyniteNonAllergique, pesanteurFaciale, douleurOsFace, sinusiteChronique, commentaire, idUtilisateur
         } = req.body;
         return ManifestationORL
             .create({
@@ -23,7 +23,8 @@ class ManifOrl {
                 pesanteurFaciale,
                 douleurOsFace,
                 sinusiteChronique,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionOrl => res.status(201).send({
                 success: true,
@@ -37,6 +38,19 @@ class ManifOrl {
             .findAll()
             .then(listeManifestionOrl => res.status(200).send(listeManifestionOrl));
     }
+
+    static getOneManifestionOrlByIdUtilisateur(req, res) {
+        return ManifestationORL
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionOrl => res.status(200).send(listeManifestionOrl));
+    }
+
+    static getAllManifestionOrlByIdUtilisateur(req, res) {
+        return ManifestationORL
+            .findAll({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionOrl => res.status(200).send(listeManifestionOrl));
+    }
+
 
     static updateManifestionOrl(req, res) {
         const {

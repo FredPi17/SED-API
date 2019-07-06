@@ -7,7 +7,7 @@ class ManifOsteoArticulaire {
     static addManifestionOsteoArticulaire(req, res) {
         const {
             craquemenArticulaire, entorse, subluxation, luxation, douleurArticulaire, douleurLigamentaire, douleurTendineuse, blocageArticulaire,
-            dechirureTendineuse, dechirureLigamentaire, tendinite, fracture, discopathie, arrachementOsseux, commentaire
+            dechirureTendineuse, dechirureLigamentaire, tendinite, fracture, discopathie, arrachementOsseux, commentaire, idUtilisateur
         } = req.body;
         return ManifestationOsteoArticulaire
             .create({
@@ -25,7 +25,8 @@ class ManifOsteoArticulaire {
                 fracture,
                 discopathie,
                 arrachementOsseux,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifOsteoArticulaire => res.status(201).send({
                 success: true,
@@ -37,6 +38,18 @@ class ManifOsteoArticulaire {
     static getManifestionOsteoArticulaire(req, res) {
         return ManifestationOsteoArticulaire
             .findAll()
+            .then(listeManifestionOsteoArticulaire => res.status(200).send(listeManifestionOsteoArticulaire));
+    }
+
+    static getOneManifestionOsteoArticulaireByIdUtilisateur(req, res) {
+        return ManifestationOsteoArticulaire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionOsteoArticulaire => res.status(200).send(listeManifestionOsteoArticulaire));
+    }
+
+    static getAllManifestionOsteoArticulaireByIdUtilisateur(req, res) {
+        return ManifestationOsteoArticulaire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionOsteoArticulaire => res.status(200).send(listeManifestionOsteoArticulaire));
     }
 

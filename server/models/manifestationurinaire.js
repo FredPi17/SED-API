@@ -36,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
         mictionDeuxTemps: DataTypes.BOOLEAN,
         mictionPoussee: DataTypes.BOOLEAN,
         commentaire: DataTypes.STRING,
-        dateDuJour: DataTypes.DATE
+        dateDuJour: DataTypes.DATE,
+        idUtilisateur: DataTypes.INTEGER
     }, {});
     ManifestationUrinaire.associate = function (models) {
         // associations can be defined here

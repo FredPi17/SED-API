@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     hypotonieMusculaire: DataTypes.INTEGER,
     douleurNeuropathique: DataTypes.INTEGER,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationNeurologique.associate = function(models) {
     // associations can be defined here

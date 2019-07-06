@@ -8,7 +8,7 @@ class ManifCutanee {
         const {
             eruptionCutanee, secheresseCutanee, ecchymoseApresChoc, ecchymoseSpontanee, plaie, hyperhydrose, flush, urticaire, eczema, psoriasis,
             demangeaison, hematome, furoncle, dyshydrose, pousseeAcnee, pousseeBoutonNonIndentifie, crevasse, engelure, desquamation, gercure, plaqueRouge,
-            irritation, boutonChaleur, brulure, apparitionPetechis, commentaire
+            irritation, boutonChaleur, brulure, apparitionPetechis, commentaire, idUtilisateur
         } = req.body;
         return ManifestionCutanee
             .create({
@@ -37,7 +37,8 @@ class ManifCutanee {
                 boutonChaleur,
                 brulure,
                 apparitionPetechis,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionCutanee => res.status(201).send({
                 success: true,
@@ -49,6 +50,18 @@ class ManifCutanee {
     static getManifestionCutanee(req, res) {
         return ManifestionCutanee
             .findAll()
+            .then(listeManifestionCutanee => res.status(200).send(listeManifestionCutanee));
+    }
+
+    static getOneManifestionCutaneeByIdUtilisateur(req, res) {
+        return ManifestionCutanee
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionCutanee => res.status(200).send(listeManifestionCutanee));
+    }
+
+    static getAllManifestionCutaneeByIdUtilisateur(req, res) {
+        return ManifestionCutanee
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionCutanee => res.status(200).send(listeManifestionCutanee));
     }
 

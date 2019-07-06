@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     pneumopathie: DataTypes.BOOLEAN,
     saturationOxygene: DataTypes.INTEGER,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestionRespiratoire.associate = function(models) {
     // associations can be defined here

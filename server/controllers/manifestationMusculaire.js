@@ -7,7 +7,7 @@ class ManifMusculaire {
     static addManifestionMusculaire(req, res) {
         const {
             myalgieDiffuse, fatigueMusculaire, crampe, faiblesseMusculaire, spasmeMusculaire, contracture, courbature, dystonie, hypertonie, hypotonie,
-            fasciculation, commentaire
+            fasciculation, commentaire, idUtilisateur
         } = req.body;
         return ManifestationMusculaire
             .create({
@@ -22,7 +22,8 @@ class ManifMusculaire {
                 hypertonie,
                 hypotonie,
                 fasciculation,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionMusculaire => res.status(201).send({
                 success: true,
@@ -34,6 +35,18 @@ class ManifMusculaire {
     static getManifestionMusculaire(req, res) {
         return ManifestationMusculaire
             .findAll()
+            .then(listeManifestionMusculaire => res.status(200).send(listeManifestionMusculaire));
+    }
+
+    static getOneManifestionMusculaireByIdUtilisateur(req, res) {
+        return ManifestationMusculaire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionMusculaire => res.status(200).send(listeManifestionMusculaire));
+    }
+
+    static getAllManifestionMusculaireByIdUtilisateur(req, res) {
+        return ManifestationMusculaire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionMusculaire => res.status(200).send(listeManifestionMusculaire));
     }
 

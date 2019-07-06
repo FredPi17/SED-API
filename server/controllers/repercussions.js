@@ -9,7 +9,7 @@ class Repercu {
             sommeil, agmentationAppetit, perteAppetit, marche, diffSupporterPosAssiseProl, diffSupporterPosDebProl, deplacementVoiture, limitDeplacementDomicile,
             limitDeplacementExterieur, escaliers, habillement, soinsHygieneCorp, seLever, tachesQuot, entretienDomicile, activitePro, loisirs, activiteManuelle,
             suivreEmissionRadioTV, parler, suivreConversation, vieSociale, vieFamiliale, intimite, desirSexuel, moral, anxiete, irritabilite, maitriseSoi, renfermement,
-            souffranceMoral, confusion, angoisse, concentration
+            souffranceMoral, confusion, angoisse, concentration, idUtilisateur
         } = req.body;
         return Repercussions
             .create({
@@ -46,11 +46,12 @@ class Repercu {
                 souffranceMoral,
                 confusion,
                 angoisse,
-                concentration
+                concentration,
+                idUtilisateur
             })
             .then(addRepercussion => res.status(201).send({
                 success: true,
-                message: 'Repercussions urinaire successfully created',
+                message: 'Repercussions successfully created',
                 addRepercussion
             }))
     }
@@ -58,6 +59,18 @@ class Repercu {
     static getRepercussion(req, res) {
         return Repercussions
             .findAll()
+            .then(listeRepercussion => res.status(200).send(listeRepercussion));
+    }
+
+    static getOneRepercussionByIdUtilisateur(req, res) {
+        return Repercussions
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeRepercussion => res.status(200).send(listeRepercussion));
+    }
+
+    static getAllRepercussionByIdUtilisateur(req, res) {
+        return Repercussions
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeRepercussion => res.status(200).send(listeRepercussion));
     }
 
@@ -109,7 +122,7 @@ class Repercu {
                 })
                     .then((updatedrepercussion) => {
                         res.status(200).send({
-                            message: 'repercussion updated',
+                            message: 'Repercussion updated',
                             data: {
                                 sommeil: sommeil || repercussion.sommeil,
                                 agmentationAppetit: agmentationAppetit || repercussion.agmentationAppetit,

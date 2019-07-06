@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     emailErode: DataTypes.BOOLEAN,
     carie: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationBuccoDentaire.associate = function(models) {
     // associations can be defined here

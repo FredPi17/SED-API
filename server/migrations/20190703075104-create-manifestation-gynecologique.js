@@ -83,6 +83,9 @@ module.exports = {
       dateDuJour: {
         type: Sequelize.DATE
       },
+        idUtilisateur: {
+            type: Sequelize.INTEGER
+        },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

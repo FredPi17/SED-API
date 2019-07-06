@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     discopathie: DataTypes.INTEGER,
     arrachementOsseux: DataTypes.INTEGER,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationOsteoArticulaire.associate = function(models) {
     // associations can be defined here

@@ -110,6 +110,9 @@ module.exports = {
             concentration: {
                 type: Sequelize.STRING
             },
+            idUtilisateur: {
+                type: Sequelize.INTEGER
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

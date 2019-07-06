@@ -8,7 +8,7 @@ class ManifCardio {
         const {
             tachycardie, tachycardieNb, bradycardie, bradycardieNb, hypertension, hypertensionNb, hypotension, hypotensionNb, tachycardiePosturale,
             tachycardiePosturaleNb, palpitation, arythmie, marbrures, extremiteFroideEtPale, malaise, varice, syncope, doigtEnfle, phlebite,
-            gonflementJambeChevillePieds, syndromeReynaud, essouflement, douleurThoracique, evanouissement, systole, diastole, pouls, commentaire
+            gonflementJambeChevillePieds, syndromeReynaud, essouflement, douleurThoracique, evanouissement, systole, diastole, pouls, commentaire, idUtilisateur
         } = req.body;
         return ManifestionCardioVasculaire
             .create({
@@ -39,7 +39,8 @@ class ManifCardio {
                 systole,
                 diastole,
                 pouls,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionCardio => res.status(201).send({
                 success: true,
@@ -51,6 +52,18 @@ class ManifCardio {
     static getManifestionCardio(req, res) {
         return ManifestionCardioVasculaire
             .findAll()
+            .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
+    }
+
+    static getOneManifestionCardioByIdUtilisateur(req, res) {
+        return ManifestionCardioVasculaire
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
+    }
+
+    static getAllManifestionCardioByIdUtilisateur(req, res) {
+        return ManifestionCardioVasculaire
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
     }
 

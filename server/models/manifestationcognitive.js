@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     troubleOrientation: DataTypes.BOOLEAN,
     troubleVisuoSpacial: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationCognitive.associate = function(models) {
     // associations can be defined here

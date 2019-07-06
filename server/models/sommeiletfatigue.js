@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     somnambulisme: DataTypes.BOOLEAN,
     terreurNocturne: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   SommeilEtFatigue.associate = function(models) {
     // associations can be defined here

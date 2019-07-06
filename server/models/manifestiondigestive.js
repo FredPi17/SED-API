@@ -41,7 +41,7 @@ export default (sequelize, DataTypes) => {
         criseHemorroide: DataTypes.BOOLEAN,
         commentaire: DataTypes.STRING,
         dateDuJour: DataTypes.DATE,
-
+        idUtilisateur: DataTypes.INTEGER
     }, {});
     ManifestionDigestive.associate = function (models) {
         // associations can be defined here

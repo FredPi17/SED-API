@@ -7,7 +7,7 @@ class ManifCognitive {
     static addManifestionCognitive(req, res) {
         const {
             alterationMemoireTravail, difficulteCoordinationMouvement, troubleMemoire, ralentissementPensee, oublis, perteMot, difficulteConcentration,
-            brouillardMental, troubleOrientation, troubleVisuoSpacial, commentaire
+            brouillardMental, troubleOrientation, troubleVisuoSpacial, commentaire, idUtilisateur
         } = req.body;
         return ManifestationCognitive
             .create({
@@ -21,7 +21,8 @@ class ManifCognitive {
                 brouillardMental,
                 troubleOrientation,
                 troubleVisuoSpacial,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionCognitive => res.status(201).send({
                 success: true,
@@ -33,6 +34,18 @@ class ManifCognitive {
     static getManifestionCognitive(req, res) {
         return ManifestationCognitive
             .findAll()
+            .then(listeManifestionCognitive => res.status(200).send(listeManifestionCognitive));
+    }
+
+    static getOneManifestionCognitiveByIdUtilisateur(req, res) {
+        return ManifestationCognitive
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionCognitive => res.status(200).send(listeManifestionCognitive));
+    }
+
+    static getAllManifestionCognitiveByIdUtilisateur(req, res) {
+        return ManifestationCognitive
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionCognitive => res.status(200).send(listeManifestionCognitive));
     }
 

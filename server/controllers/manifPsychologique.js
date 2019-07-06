@@ -7,7 +7,7 @@ class ManifPsychologique {
     static addManifestionPsychologique(req, res) {
         const {
             anxiete, criseAngoisse, stress, epuisementPsychique, burnOut, tensionInterne, etatDepressif, perteElanVital, tristesseInhabituelle,
-            irritabilite, hypersensibilite, baisseMoral, sauteHumeur, envieDeRien, commentaire
+            irritabilite, hypersensibilite, baisseMoral, sauteHumeur, envieDeRien, commentaire, idUtilisateur
         } = req.body;
         return ManifestationPsychologique
             .create({
@@ -25,7 +25,8 @@ class ManifPsychologique {
                 baisseMoral,
                 sauteHumeur,
                 envieDeRien,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addManifestionPsychologique => res.status(201).send({
                 success: true,
@@ -37,6 +38,18 @@ class ManifPsychologique {
     static getManifestionPsychologique(req, res) {
         return ManifestationPsychologique
             .findAll()
+            .then(listeManifestionPsychologique => res.status(200).send(listeManifestionPsychologique));
+    }
+
+    static getOneManifestionPsychologiqueByIdUtilisateur(req, res) {
+        return ManifestationPsychologique
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestionPsychologique => res.status(200).send(listeManifestionPsychologique));
+    }
+
+    static getAllManifestionPsychologiqueByIdUtilisateur(req, res) {
+        return ManifestationPsychologique
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestionPsychologique => res.status(200).send(listeManifestionPsychologique));
     }
 

@@ -34,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
         souffranceMoral: DataTypes.STRING,
         confusion: DataTypes.STRING,
         angoisse: DataTypes.STRING,
-        concentration: DataTypes.STRING
+        concentration: DataTypes.STRING,
+        idUtilisateur: DataTypes.INTEGER
     }, {});
     Repercussions.associate = function (models) {
         // associations can be defined here

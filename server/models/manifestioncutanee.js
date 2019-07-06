@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     brulure: DataTypes.BOOLEAN,
     apparitionPetechis: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestionCutanee.associate = function(models) {
     // associations can be defined here

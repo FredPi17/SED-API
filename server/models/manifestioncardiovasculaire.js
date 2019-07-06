@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     diastole: DataTypes.INTEGER,
     pouls: DataTypes.INTEGER,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestionCardioVasculaire.associate = function(models) {
     // associations can be defined here

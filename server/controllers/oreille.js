@@ -7,7 +7,7 @@ class OreilleSymptome {
     static addOreilleSymptome(req, res) {
         const {
             hyperacousie, hypoacousie, acouphene, bourdonnement, saignementOreille, ecoulementOreille, otite, vertigeVrai,
-            sensationVertige, commentaire
+            sensationVertige, commentaire, idUtilisateur
         } = req.body;
         return Oreille
             .create({
@@ -20,7 +20,8 @@ class OreilleSymptome {
                 otite,
                 vertigeVrai,
                 sensationVertige,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(addoreilleSymptome => res.status(201).send({
                 success: true,
@@ -32,6 +33,18 @@ class OreilleSymptome {
     static getOreilleSymptomes(req, res) {
         return Oreille
             .findAll()
+            .then(listeOreilleSymptome => res.status(200).send(listeOreilleSymptome));
+    }
+
+    static getOneOreilleSymptomesByIdUtilisateur(req, res) {
+        return Oreille
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeOreilleSymptome => res.status(200).send(listeOreilleSymptome));
+    }
+
+    static getAllOreilleSymptomesByIdUtilisateur(req, res) {
+        return Oreille
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeOreilleSymptome => res.status(200).send(listeOreilleSymptome));
     }
 

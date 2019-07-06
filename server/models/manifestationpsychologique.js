@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     sauteHumeur: DataTypes.BOOLEAN,
     envieDeRien: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   ManifestationPsychologique.associate = function(models) {
     // associations can be defined here

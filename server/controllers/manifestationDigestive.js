@@ -10,7 +10,7 @@ class ManifDigestive {
             indigestion, gastroParesie, brulureEstomac, ballonements, aerophagie, douleurAbdominale, douleurEpigastrique, crampeIntestinale, estomacGonfle,
             satietePrecoce, perteAppetit, soifPermanente, impossibiliteAlimenter, absenceSatiete, sensationFaimDouloureuse, hypoglycemieReactionnelle, gaz,
             constipation, selleLiquide, spasmeIntestinaux, douleurVesiculaire, imperiositeFecale, amaigrissement, prisePoids, saignementDigestifHaut,
-            saignementDigestifBas, criseHemorroide, commentaire
+            saignementDigestifBas, criseHemorroide, commentaire, idUtilisateur
         } = req.body;
         return ManifestionDigestive
             .create({
@@ -51,7 +51,8 @@ class ManifDigestive {
                 saignementDigestifHaut,
                 saignementDigestifBas,
                 criseHemorroide,
-                commentaire
+                commentaire,
+                idUtilisateur
             })
             .then(adddigestiveSymptome => res.status(201).send({
                 success: true,
@@ -63,6 +64,18 @@ class ManifDigestive {
     static getManifestionDigestive(req, res) {
         return ManifestionDigestive
             .findAll()
+            .then(listeManifestationDigestive => res.status(200).send(listeManifestationDigestive));
+    }
+
+    static getOneManifestionDigestiveByIdUtilisateur(req, res) {
+        return ManifestionDigestive
+            .findOne({where: {idUtilisateur: req.params.id}})
+            .then(listeManifestationDigestive => res.status(200).send(listeManifestationDigestive));
+    }
+
+    static getAllManifestionDigestiveByIdUtilisateur(req, res) {
+        return ManifestionDigestive
+            .findAll({where: {idUtilisateur: req.params.id}})
             .then(listeManifestationDigestive => res.status(200).send(listeManifestationDigestive));
     }
 

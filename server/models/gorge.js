@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     tracheite: DataTypes.BOOLEAN,
     adenopathie: DataTypes.BOOLEAN,
     commentaire: DataTypes.STRING,
-    dateDuJour: DataTypes.DATE
+      dateDuJour: DataTypes.DATE,
+      idUtilisateur: DataTypes.INTEGER
   }, {});
   Gorge.associate = function(models) {
     // associations can be defined here
