@@ -24,7 +24,6 @@ export default (app) => {
         message: 'Welcome to the SED API!',
     }));
 
-
     // Routes for gorge
     app.post('/api/gorge', GorgeSymptome.addGorgeSymptome); // API route to add a gorgeSymptome
     app.get('/api/gorge', GorgeSymptome.getGorgeSymptomes); // API route to get all gorgeSymptomes
