@@ -43,7 +43,7 @@ class ManifPsychologique {
 
     static getOneManifestionPsychologiqueByIdUtilisateur(req, res) {
         return ManifestationPsychologique
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionPsychologique => res.status(200).send(listeManifestionPsychologique));
     }
 

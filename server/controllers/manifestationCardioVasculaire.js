@@ -57,7 +57,7 @@ class ManifCardio {
 
     static getOneManifestionCardioByIdUtilisateur(req, res) {
         return ManifestionCardioVasculaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
     }
 

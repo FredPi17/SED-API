@@ -48,7 +48,7 @@ class ManifOphtalmo {
 
     static getOneManifestionOphtalmoByIdUtilisateur(req, res) {
         return ManifestationOphtamologique
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionOphtalmo => res.status(200).send(listeManifestionOphtalmo));
     }
 

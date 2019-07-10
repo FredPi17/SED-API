@@ -40,7 +40,7 @@ class ManifMusculaire {
 
     static getOneManifestionMusculaireByIdUtilisateur(req, res) {
         return ManifestationMusculaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionMusculaire => res.status(200).send(listeManifestionMusculaire));
     }
 
