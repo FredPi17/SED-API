@@ -69,7 +69,7 @@ class ManifDigestive {
 
     static getOneManifestionDigestiveByIdUtilisateur(req, res) {
         return ManifestionDigestive
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestationDigestive => res.status(200).send(listeManifestationDigestive));
     }
 

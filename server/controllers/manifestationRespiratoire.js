@@ -52,7 +52,7 @@ class ManifRespi {
 
     static getOneManifestionRespiByIdUtilisateur(req, res) {
         return ManifestionRespiratoire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionRespi => res.status(200).send(listeManifestionRespi));
     }
 

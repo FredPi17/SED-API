@@ -44,7 +44,7 @@ class ManifCardio {
             })
             .then(addManifestionCardio => res.status(201).send({
                 success: true,
-                message: 'Gorge symptome successfully created',
+                message: 'Cardio vasculaire symptome successfully created',
                 addManifestionCardio
             }))
     }
@@ -57,7 +57,7 @@ class ManifCardio {
 
     static getOneManifestionCardioByIdUtilisateur(req, res) {
         return ManifestionCardioVasculaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionCardio => res.status(200).send(listeManifestionCardio));
     }
 
@@ -108,7 +108,7 @@ class ManifCardio {
                 })
                     .then((updatedcardio) => {
                         res.status(200).send({
-                            message: 'Gorge updated',
+                            message: 'Cardio vasculaire updated',
                             data: {
                                 tachycardie: tachycardie || updatedcardio.tachycardie,
                                 tachycardieNb: tachycardieNb || updatedcardio.tachycardieNb,

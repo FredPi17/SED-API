@@ -7,7 +7,7 @@ class ManifOsteoArticulaire {
     static addManifestionOsteoArticulaire(req, res) {
         const {
             craquemenArticulaire, entorse, subluxation, luxation, douleurArticulaire, douleurLigamentaire, douleurTendineuse, blocageArticulaire,
-            dechirureTendineuse, dechirureLigamentaire, tendinite, fracture, discopathie, arrachementOsseux, commentaire, idUtilisateur
+            dechirureTendineuse, dechirureLigamentaire, tendinite, discopathie, commentaire, idUtilisateur
         } = req.body;
         return ManifestationOsteoArticulaire
             .create({
@@ -22,9 +22,7 @@ class ManifOsteoArticulaire {
                 dechirureTendineuse,
                 dechirureLigamentaire,
                 tendinite,
-                fracture,
                 discopathie,
-                arrachementOsseux,
                 commentaire,
                 idUtilisateur
             })
@@ -43,7 +41,7 @@ class ManifOsteoArticulaire {
 
     static getOneManifestionOsteoArticulaireByIdUtilisateur(req, res) {
         return ManifestationOsteoArticulaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionOsteoArticulaire => res.status(200).send(listeManifestionOsteoArticulaire));
     }
 
@@ -56,7 +54,7 @@ class ManifOsteoArticulaire {
     static updateManifestionOsteoArticulaire(req, res) {
         const {
             craquemenArticulaire, entorse, subluxation, luxation, douleurArticulaire, douleurLigamentaire, douleurTendineuse, blocageArticulaire,
-            dechirureTendineuse, dechirureLigamentaire, tendinite, fracture, discopathie, arrachementOsseux, commentaire
+            dechirureTendineuse, dechirureLigamentaire, tendinite, discopathie, commentaire
         } = req.body;
         return ManifestationOsteoArticulaire
             .findByPk(req.params.id)
@@ -73,9 +71,7 @@ class ManifOsteoArticulaire {
                     dechirureTendineuse: dechirureTendineuse || osteoArt.dechirureTendineuse,
                     dechirureLigamentaire: dechirureLigamentaire || osteoArt.dechirureLigamentaire,
                     tendinite: tendinite || osteoArt.tendinite,
-                    fracture: fracture || osteoArt.fracture,
                     discopathie: discopathie || osteoArt.discopathie,
-                    arrachementOsseux: arrachementOsseux || osteoArt.arrachementOsseux,
                     commentaire: commentaire || osteoArt.commentaire
                 })
                     .then((updatedosteoArt) => {
@@ -93,9 +89,7 @@ class ManifOsteoArticulaire {
                                 dechirureTendineuse: dechirureTendineuse || updatedosteoArt.dechirureTendineuse,
                                 dechirureLigamentaire: dechirureLigamentaire || updatedosteoArt.dechirureLigamentaire,
                                 tendinite: tendinite || updatedosteoArt.tendinite,
-                                fracture: fracture || updatedosteoArt.fracture,
                                 discopathie: discopathie || updatedosteoArt.discopathie,
-                                arrachementOsseux: arrachementOsseux || updatedosteoArt.arrachementOsseux,
                                 commentaire: commentaire || updatedosteoArt.commentaire
                             }
                         })

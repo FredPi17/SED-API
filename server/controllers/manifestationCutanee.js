@@ -55,7 +55,7 @@ class ManifCutanee {
 
     static getOneManifestionCutaneeByIdUtilisateur(req, res) {
         return ManifestionCutanee
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionCutanee => res.status(200).send(listeManifestionCutanee));
     }
 

@@ -65,7 +65,7 @@ class ManifUrinaire {
 
     static getOneManifestionUrinaireByIdUtilisateur(req, res) {
         return ManifestationUrinaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionUrinaire => res.status(200).send(listeManifestionUrinaire));
     }
 

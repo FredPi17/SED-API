@@ -41,7 +41,7 @@ class ManifOrl {
 
     static getOneManifestionOrlByIdUtilisateur(req, res) {
         return ManifestationORL
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionOrl => res.status(200).send(listeManifestionOrl));
     }
 

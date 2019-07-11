@@ -38,7 +38,7 @@ class OreilleSymptome {
 
     static getOneOreilleSymptomesByIdUtilisateur(req, res) {
         return Oreille
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeOreilleSymptome => res.status(200).send(listeOreilleSymptome));
     }
 

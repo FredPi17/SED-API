@@ -53,7 +53,7 @@ class ManifGyneco {
 
     static getOneManifestionGynecoByIdUtilisateur(req, res) {
         return ManifestationGynecologique
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionGyneco => res.status(200).send(listeManifestionGyneco));
     }
 

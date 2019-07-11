@@ -45,7 +45,7 @@ class ManifNeuro {
 
     static getOneManifestionNeuroByIdUtilisateur(req, res) {
         return ManifestationNeurologique
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionNeuro => res.status(200).send(listeManifestionNeuro));
     }
 

@@ -49,7 +49,7 @@ class ManifBuccoDent {
 
     static getOneManifestionBuccoDentByIdUtilisateur(req, res) {
         return ManifestationBuccoDentaire
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeManifestionBuccoDent => res.status(200).send(listeManifestionBuccoDent));
     }
 

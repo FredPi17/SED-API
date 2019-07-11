@@ -64,7 +64,7 @@ class Repercu {
 
     static getOneRepercussionByIdUtilisateur(req, res) {
         return Repercussions
-            .findOne({where: {idUtilisateur: req.params.id}})
+            .findOne({limit: 1, where: {idUtilisateur: req.params.id}, order: [['id', 'DESC']]})
             .then(listeRepercussion => res.status(200).send(listeRepercussion));
     }
 
