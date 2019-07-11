@@ -5,13 +5,13 @@ const {Traitements} = model;
 class Traitement {
 
     static addTraitement(req, res) {
-        const {nom, posologie, quantite, nbParJour, dateDebut, dateDeFin, idUtilisateur} = req.body;
+        const {nom, posologie, dosage, isActive, dateDebut, dateDeFin, idUtilisateur} = req.body;
         return Traitements
             .create({
                 nom,
                 posologie,
-                quantite,
-                nbParJour,
+                dosage,
+                isActive,
                 dateDebut,
                 dateDeFin,
                 idUtilisateur
@@ -41,9 +41,20 @@ class Traitement {
             .then(listeTraitement => res.status(200).send(listeTraitement));
     }
 
+    static setInactive(req, res) {
+        Traitements.update(
+            {
+                isActive: false
+            },
+            {
+                returning: true, where: {id: req.params.id}
+            }
+        )
+    }
+
     static updateTraitement(req, res) {
         const {
-            nom, posologie, quantite, nbParJour, dateDebut, dateDeFin
+            nom, posologie, dosage, isActive, dateDebut, dateDeFin
         } = req.body;
         return Traitements
             .findByPk(req.params.id)
@@ -51,8 +62,8 @@ class Traitement {
                 traitement.update({
                     nom: nom || traitement.nom,
                     posologie: posologie || traitement.posologie,
-                    quantite: quantite || traitement.quantite,
-                    nbParJour: nbParJour || traitement.nbParJour,
+                    dosage: dosage || traitement.dosage,
+                    isActive: isActive || traitement.isActive,
                     dateDebut: dateDebut || traitement.dateDebut,
                     dateDeFin: dateDeFin || traitement.dateDeFin,
                 })
@@ -60,12 +71,12 @@ class Traitement {
                         res.status(200).send({
                             message: 'Traitement updated',
                             data: {
-                                nom: nom || traitement.nom,
-                                posologie: posologie || traitement.posologie,
-                                quantite: quantite || traitement.quantite,
-                                nbParJour: nbParJour || traitement.nbParJour,
-                                dateDebut: dateDebut || traitement.dateDebut,
-                                dateDeFin: dateDeFin || traitement.dateDeFin
+                                nom: nom || updatedtraitement.nom,
+                                posologie: posologie || updatedtraitement.posologie,
+                                dosage: dosage || updatedtraitement.dosage,
+                                isActive: isActive || updatedtraitement.isActive,
+                                dateDebut: dateDebut || updatedtraitement.dateDebut,
+                                dateDeFin: dateDeFin || updatedtraitement.dateDeFin
                             }
                         })
                     })

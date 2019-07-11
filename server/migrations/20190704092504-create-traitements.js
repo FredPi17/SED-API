@@ -14,11 +14,11 @@ module.exports = {
             posologie: {
                 type: Sequelize.STRING
             },
-            quantite: {
+            dosage: {
                 type: Sequelize.STRING
             },
-            nbParJour: {
-                type: Sequelize.STRING
+            isActive: {
+                type: Sequelize.BOOLEAN
             },
             dateDebut: {
                 type: Sequelize.DATE

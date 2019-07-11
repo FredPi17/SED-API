@@ -173,6 +173,7 @@ export default (app) => {
     // Routes for traitements
     app.post('/api/traitements', Traitement.addTraitement); // API route to add a traitements
     app.get('/api/traitements', Traitement.getTraitement); // API route to get all traitements
+    app.put('/api/traitements/inactive/:id', Traitement.setInactive); // API route to set traitement to inactive
     app.get('/api/traitements/:id', Traitement.getOneTraitementByIdUtilisateur); // API route to get one traitements by idUtilisateur
     app.get('/api/traitements/all/:id', Traitement.getAllTraitementByIdUtilisateur); // API route to get all traitements by idUtilisateur
     app.put('/api/traitements/:id', Traitement.updateTraitement); // API route to update a traitements
