@@ -1,14 +1,14 @@
 import model from '../models';
 
-const {Arti} = model;
+const {Articulation} = model;
 
-class Articulation {
+class ArticulationHumaine {
 
     static addArticulation(req, res) {
         const {
             name
         } = req.body;
-        return Arti
+        return Articulation
             .create({
                 name
             })
@@ -20,16 +20,22 @@ class Articulation {
     }
 
     static getArticulations(req, res) {
-        return Arti
+        return Articulation
             .findAll()
             .then(listeArticulations => res.status(200).send(listeArticulations));
+    }
+
+    static getArticulationById(req, res) {
+        return Articulation
+            .findOne({where: {id: req.params.id}})
+            .then(articulation => res.status(200).send(articulation));
     }
 
     static updateArticulations(req, res) {
         const {
             name
         } = req.body;
-        return Arti
+        return Articulation
             .findByPk(req.params.id)
             .then((articulation) => {
                 articulation.update({
@@ -39,7 +45,7 @@ class Articulation {
                         res.status(200).send({
                             message: 'Articulation updated',
                             data: {
-                                name: name || articulation.name
+                                name: name || updatedArticulation.name
                             }
                         })
                     })
@@ -49,7 +55,7 @@ class Articulation {
     }
 
     static deleteArticulation(req, res) {
-        return Arti
+        return Articulation
             .findByPk(req.params.id)
             .then(articulation => {
                 if (!articulation) {
@@ -68,4 +74,4 @@ class Articulation {
     }
 }
 
-export default Articulation;
+export default ArticulationHumaine;

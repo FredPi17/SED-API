@@ -17,6 +17,7 @@ import ManifCutanee from "../controllers/manifestationCutanee";
 import ManifGyneco from "../controllers/manifestationGyneco";
 import Repercu from "../controllers/repercussions";
 import Traitement from "../controllers/Traitement";
+import Articulation from "../controllers/Articulation";
 
 export default (app) => {
 
@@ -178,4 +179,10 @@ export default (app) => {
     app.put('/api/traitements/:id', Traitement.updateTraitement); // API route to update a traitements
     app.delete('/api/traitements/:id', Traitement.deleteTraitement); // API route to delete a traitements
 
+    //Routes for articulations
+    app.post('/api/articulation', Articulation.addArticulation); // API route to add an articulation
+    app.get('/api/articulations', Articulation.getArticulations); // API route to get all articulations
+    app.get('/api/articulation/:id', Articulation.getArticulationById); // API route to get an articulation
+    app.put('/api/articulation/:id', Articulation.updateArticulations); // API route to update an articulation
+    app.delete('/api/articulation/:id', Articulation.deleteArticulation); // API route to delete an articulation
 };
