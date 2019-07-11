@@ -41,13 +41,7 @@ module.exports = {
       tendinite: {
         type: Sequelize.INTEGER
       },
-      fracture: {
-        type: Sequelize.INTEGER
-      },
       discopathie: {
-        type: Sequelize.INTEGER
-      },
-      arrachementOsseux: {
         type: Sequelize.INTEGER
       },
       commentaire: {

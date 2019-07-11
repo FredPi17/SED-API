@@ -12,9 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     dechirureTendineuse: DataTypes.INTEGER,
     dechirureLigamentaire: DataTypes.INTEGER,
     tendinite: DataTypes.INTEGER,
-    fracture: DataTypes.INTEGER,
     discopathie: DataTypes.INTEGER,
-    arrachementOsseux: DataTypes.INTEGER,
     commentaire: DataTypes.STRING,
       dateDuJour: DataTypes.DATE,
       idUtilisateur: DataTypes.INTEGER
